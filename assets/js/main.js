@@ -8,7 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // CONFIGURAÇÃO DO CHECKOUT
   // Substitua este link pelo seu link da Kiwify, Hotmart, Eduzz, etc.
   // ============================================================
-  const CHECKOUT_URL = 'https://pay.kiwify.com.br/exemplo'; // Insira aqui o link final de checkout
+  const CHECKOUT_URL = 'https://kiwify.app/ofn5te6'; // Insira aqui o link final de checkout
+
+  // ============================================================
+  // ROLAGEM SUAVE ATÉ A OFERTA (BOTÃO DA HERO SECTION)
+  // ============================================================
+  const heroScrollButtons = document.querySelectorAll('.js-scroll-to-offer');
+  heroScrollButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const offerSection = document.getElementById('oferta');
+      if (offerSection) {
+        offerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 
   // Aplicar link nos botões que levam ao checkout
   const checkoutButtons = document.querySelectorAll('.js-checkout-btn');
@@ -58,14 +72,25 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // ============================================================
-  // 2. MOCKUP DE PLAYER DE VÍDEO INTERATIVO
+  // 2. MOCKUP DE PLAYER DE VÍDEO INTERATIVO (OFERTA FINAL)
   // ============================================================
   const videoPlayer = document.getElementById('simulated-video-player');
   if (videoPlayer) {
     videoPlayer.addEventListener('click', () => {
-      const offerSection = document.getElementById('oferta');
-      if (offerSection) {
-        offerSection.scrollIntoView({ behavior: 'smooth' });
+      const checkoutBtn = document.querySelector('.offer-box-white .js-checkout-btn') || document.querySelector('.js-checkout-btn');
+      if (checkoutBtn) {
+        // Dispara o leve destaque no botão de compra
+        checkoutBtn.classList.remove('cta-highlight-active');
+        void checkoutBtn.offsetWidth; // Força reflow do navegador
+        checkoutBtn.classList.add('cta-highlight-active');
+
+        // Garante que o botão esteja visível na tela
+        checkoutBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Remove a classe após a animação
+        setTimeout(() => {
+          checkoutBtn.classList.remove('cta-highlight-active');
+        }, 1400);
       }
     });
   }
