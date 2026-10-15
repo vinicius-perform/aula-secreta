@@ -1408,12 +1408,26 @@ body {
 }
 
 .final-offer-card-container .offer-title-dark {
-  font-size: 28px;
+  font-size: clamp(20px, 5.4vw, 28px);
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #050705;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   letter-spacing: -0.02em;
+}
+
+.final-offer-card-container .offer-title-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .final-offer-card-container .offer-box-white {
+    padding: 38px 16px;
+  }
+  .final-offer-card-container .offer-title-dark {
+    font-size: clamp(19px, 5.2vw, 24px);
+  }
 }
 
 @media (min-width: 768px) {
