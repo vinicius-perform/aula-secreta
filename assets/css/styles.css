@@ -59,6 +59,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Remover espaço em brando lateral no mobile */
+html, body {
+  overflow-x: hidden !important; 
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-dark-primary);
@@ -66,7 +71,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 ::selection {
@@ -156,6 +160,7 @@ body {
   position: relative;
   border-bottom: 1px solid var(--border-dark);
   color: #FFFFFF;
+  overflow: hidden;
 }
 
 /* Brilho de Fundo Hero */
