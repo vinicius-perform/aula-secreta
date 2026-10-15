@@ -1238,8 +1238,10 @@ body {
 
 .hero-video-col {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hero-video-wrapper-916 {
@@ -1310,6 +1312,32 @@ body {
 .hero-cta-action {
   display: flex;
   justify-content: center;
+}
+
+.hero-cta-desktop {
+  display: flex;
+}
+
+.hero-cta-mobile {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .hero-cta-desktop {
+    display: none !important;
+  }
+
+  .hero-cta-mobile {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .hero-cta-mobile .btn-cta-vibrant {
+    max-width: 360px;
+    width: 100%;
+  }
 }
 
 /* ============================================================
